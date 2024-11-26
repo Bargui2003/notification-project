@@ -1,18 +1,18 @@
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { FirestoreService } from './firebase/firestore.service';
 
-@Controller('firebase')
-export class FirebaseController {
+@Controller('notifications')
+export class AppController {
   constructor(private readonly firestoreService: FirestoreService) {}
 
-  @Get('collection')
-  async getCollection() {
-    return this.firestoreService.getCollection('exampleCollection');
+  @Get()
+  async getNotifications() {
+    return this.firestoreService.getNotifications();
   }
 
-  @Post('add')
-  async addDocument(@Body() data: any) {
-    await this.firestoreService.addDocument('exampleCollection', data);
-    return { message: 'Document added successfully' };
+  @Post()
+  async addNotification(@Body() data: any) {
+    await this.firestoreService.addNotification(data);
+    return { message: 'Notification added successfully' };
   }
 }

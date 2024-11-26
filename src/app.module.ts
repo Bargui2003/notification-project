@@ -1,15 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { FirebaseModule } from 'nestjs-firebase';
-import { FirebaseServiceService } from './firebase-service/firebase-service.service';
-import { FirebaseModule } from './firebase/firebase.module';
+import { FirestoreService } from './firebase/firestore.service';
 
 @Module({
-  imports: [FirebaseModule.forRoot({
-    googleApplicationCredential: "path/to/credential file.json",
-  }), FirebaseModule,],
+  imports: [],
   controllers: [AppController],
-  providers: [AppService, FirebaseServiceService],
+  providers: [AppService, FirestoreService],
 })
 export class AppModule {}
